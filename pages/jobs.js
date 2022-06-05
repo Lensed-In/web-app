@@ -1,10 +1,10 @@
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
-import { Navbar } from "../component/Layout/Navbar";
 import { Footer } from "../component/Layout/Footer";
-// import { Navbar, Footer } from "../component/Layout";
-import { Home } from "../component/Pages/Home";
-export default function Index() {
+import { Navbar } from "../component/Layout/Navbar";
+import { JobsPage } from "../component/Pages/jobs";
+
+export default function Jobs() {
   return (
     <Box>
       <Head>
@@ -12,8 +12,10 @@ export default function Index() {
         <meta name="description" content="Lensed-In is web3 job platform" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Navbar />
-      <Home />
+
+      <JobsPage />
 
       <Footer />
     </Box>

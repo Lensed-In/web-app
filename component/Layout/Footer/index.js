@@ -1,6 +1,6 @@
 import { Box, Container, Text, useColorModeValue } from "@chakra-ui/react";
 
-export default function Footers() {
+export const Footer = () => {
   const bg = useColorModeValue("white", "inherit");
   const color = useColorModeValue("white", "inherit");
   const borderColor = useColorModeValue("gray.400", "blue.500");
@@ -14,11 +14,9 @@ export default function Footers() {
         color={useColorModeValue("gray.900", "blue.500")}
       >
         <Container maxW={"6xl"} py={4}>
-          <Text align="center">
-            © 2022 Powered by Nextjs + Chakra-ui + Wagmi
-          </Text>
+          <Text align="center">© 2022 Lensed-In</Text>
         </Container>
       </Box>
     </Box>
   );
-}
+};

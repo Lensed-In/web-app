@@ -19,7 +19,7 @@ import {
 // Import Wagmi hooks
 import { useConnect, useAccount, useBalance } from "wagmi";
 
-export default function WalletModel() {
+export const WalletModel = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   // Wallet connect function
   const [{ data: connectData, error: connectError }, connect] = useConnect();
@@ -61,7 +61,7 @@ export default function WalletModel() {
               Balance: {`${Number(getBalance?.formatted).toFixed(3)} ETH`}
             </Text>
           </Box>
-          <Button borderRadius="2xl" bg="blue.500" onClick={disconnect}>
+          <Button borderRadius="2xl" bg="brandMain" onClick={disconnect}>
             Disconnect
           </Button>
         </HStack>
@@ -115,4 +115,4 @@ export default function WalletModel() {
       </Modal>
     </>
   );
-}
+};

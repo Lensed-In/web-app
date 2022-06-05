@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import {
   chakra,
@@ -12,6 +13,7 @@ import {
   VStack,
   IconButton,
   CloseButton,
+  Stack,
   InputGroup,
   InputLeftElement,
   Input,
@@ -22,14 +24,14 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 
-import { WalletModel } from "..";
+import { WalletModel } from "../../WalletModel";
 
 //import { Logo } from "../../public"
 
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 
-export default function Navbar() {
+export const Navbar = () => {
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
 
@@ -41,11 +43,10 @@ export default function Navbar() {
   const bgColor = useColorModeValue("blue.200", "blue.500");
 
   return (
-    <Box shadow="2xl" borderRadius="3xl">
+    <Box shadow="2xl">
       <chakra.header
         bg={bg}
         borderColor={useColorModeValue("gray.400", "blue.500")}
-        borderBottomWidth={1}
         w="full"
         px={{ base: 2, sm: 4 }}
         py={4}
@@ -85,7 +86,7 @@ export default function Navbar() {
                 />
 
                 <WalletModel />
-                <IconButton
+                {/* <IconButton
                   bg={bgColor}
                   borderRadius="2xl"
                   size="md"
@@ -97,7 +98,7 @@ export default function Navbar() {
                   ml={{ base: "0", md: "3" }}
                   onClick={toggleMode}
                   icon={<SwitchIcon />}
-                />
+                /> */}
               </VStack>
             </Box>
             <chakra.a
@@ -107,16 +108,16 @@ export default function Navbar() {
               alignItems="center"
             >
               {/* <Logo /> */}
-              <VisuallyHidden>NCW Starter</VisuallyHidden>
+              <VisuallyHidden>Lensed-In</VisuallyHidden>
             </chakra.a>
             <chakra.h1 fontWeight="semibold" fontSize="2xl">
-              NCW Starter
+              Lensed-In
             </chakra.h1>
           </HStack>
           <HStack spacing={3} display="flex" alignItems="center">
             <HStack spacing={3} display={{ base: "none", md: "inline-flex" }}>
               <WalletModel />
-
+              {/* 
               <IconButton
                 bg={bgColor}
                 borderRadius="2xl"
@@ -128,7 +129,7 @@ export default function Navbar() {
                 ml={{ base: "0", md: "3" }}
                 onClick={toggleMode}
                 icon={<SwitchIcon />}
-              />
+              /> */}
             </HStack>
             <chakra.a
               p={3}
@@ -148,51 +149,22 @@ export default function Navbar() {
         borderWidth={0}
         overflowX="auto"
       >
-        <Tabs defaultIndex={1} borderBottomColor="transparent">
-          <TabList>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
-            >
-              Dashboard
-            </Tab>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
-            >
-              Portfolio
-            </Tab>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
-            >
-              Wallet
-            </Tab>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
-            >
-              Send
-            </Tab>
-            <Tab
-              fontWeight="semibold"
-              py={4}
-              m={0}
-              _focus={{ boxShadow: "none" }}
-            >
-              Transaction
-            </Tab>{" "}
-          </TabList>
+        <Tabs defaultIndex={0} borderBottomColor="transparent">
+          <Stack direction="row" spacing={4} align="center" m={4}>
+            <Button colorScheme="gray" variant="link">
+              <Link href="/">Posts</Link>
+            </Button>
+
+            <Button colorScheme="gray" variant="link">
+              <Link href="/jobs">Jobs</Link>
+            </Button>
+
+            <Button colorScheme="gray" variant="link">
+              <Link href="/profile">Profile</Link>
+            </Button>
+          </Stack>
         </Tabs>
       </Flex>
     </Box>
   );
-}
+};

@@ -3,6 +3,7 @@ import { Provider, chain, defaultChains } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { WalletLinkConnector } from "wagmi/connectors/walletLink";
+import theme from "../component/theme";
 
 // API key for Ethereum node
 // services are Infura (infura.io)
@@ -35,7 +36,7 @@ const connectors = ({ chainId }) => {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider autoConnect connectors={connectors}>
         <Component {...pageProps} />
       </Provider>
