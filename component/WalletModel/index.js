@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import {
   Box,
   HStack,
@@ -20,6 +21,7 @@ import {
 import { useConnect, useAccount, useBalance } from "wagmi";
 
 export const WalletModel = () => {
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   // Wallet connect function
   const [{ data: connectData, error: connectError }, connect] = useConnect();
@@ -34,6 +36,9 @@ export const WalletModel = () => {
   // Button bgColor
   const bgColor = useColorModeValue("blue.200", "blue.500");
 
+  const createJob = () => {
+    router.push("/job/create");
+  };
   // Fetching balance information
   const [{ data: getBalance }] = useBalance({
     addressOrName: accountData?.address,
@@ -61,8 +66,20 @@ export const WalletModel = () => {
               Balance: {`${Number(getBalance?.formatted).toFixed(3)} ETH`}
             </Text>
           </Box>
-          <Button borderRadius="2xl" bg="brandMain" onClick={disconnect}>
+          <Button
+            borderRadius="2xl"
+            color={"white"}
+            bg="brandMain"
+            onClick={disconnect}
+          >
             Disconnect
+          </Button>
+          <Button
+            color={"brandMain"}
+            borderRadius="2xl"
+            onClick={() => createJob()}
+          >
+            Create Job
           </Button>
         </HStack>
       </Box>
@@ -70,7 +87,7 @@ export const WalletModel = () => {
   }
   return (
     <>
-      <Button bg={bgColor} borderRadius="2xl" onClick={onOpen}>
+      <Button bg={"brandMain"} borderRadius="2xl" onClick={onOpen}>
         Connect
       </Button>
 
@@ -84,8 +101,9 @@ export const WalletModel = () => {
               <HStack py={2} key={x.id}>
                 <Button
                   w="full"
+                  bgColor={"brandBackGround"}
                   borderRadius="full"
-                  bgColor={bgColor}
+                  // bgColor={bgColor}
                   disabled={!x.ready}
                   onClick={() => connect(x)}
                 >

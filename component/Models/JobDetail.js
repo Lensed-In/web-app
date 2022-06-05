@@ -78,7 +78,7 @@ export const JobDetail = () => {
               src="https://bit.ly/dan-abramov"
             />
             <Text color={"GrayText"} fontSize="md">
-              Go roolem ipsum dolor sit amet co
+              0x4n2y889fda3n2lnjfo820834
             </Text>
           </HStack>
         </VStack>
